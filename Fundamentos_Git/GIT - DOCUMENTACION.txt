@@ -1,0 +1,190 @@
+*** INSTALACIONES NECESARIOS
+
+https://gist.github.com/Klerith/90a612344dc2d4e4455ea810fdacbe69
+
+*** FUNDAMENTOS 
+
+* git --version => Muestra la version de git,
+cuando tiene -- la palabra es completa
+si tiene un solo -, la palabra es abreviada
+
+* git help => Ayudas para los comandos de git
+* git clone = Clonar el repositorio
+* git init,inicia el git
+* git add, agrega los archivos al repositorio
+
+* git help commit, comandos para los comandos del commit
+
+*** CONFIGURACION DEL GIT, para dejar la marca en los commits con el nombre y el usuario
+de manera local
+
+*Nombre de usuario
+git config --global user.name "Gabriel Betin Valdes"
+
+* Email General
+git config --global user.email "gabrielbetinvaldes@gmail.com"
+
+
+** Validar si quedo configurado el usuario y el email
+
+git config --global  -e
+
+[user]
+        name = Gabriel Betin Valdes
+        email = gabrielbetinvaldes@gmail.com
+[filter "lfs"]
+        clean = git-lfs clean -- %f
+        smudge = git-lfs smudge -- %f
+        process = git-lfs filter-process
+        required = true
+[safe]
+        directory = D:/VBA
+        directory = D:/VBA
+        directory = D:
+
+Dentro del a pantalla con la letra a, se pueden realizar los cambios
+
+para salir de esta pantalla se debe hacer lo siguiente
+
+esc
+se escribe :wq!
+enter
+
+*** PRIMER REPOSITORIO
+
+* Se abre el proyecto (01-bases) en visual studio code o abrimos la carpeta desde
+cualquier consola
+
+* Digitar, git init para inicializar el repositorio
+
+-- Anterriormente generaba un warning que solicitaba cambiar el nombre de
+master a main o el que seleccione
+
+git config --global init.defaultBranch <name>
+
+Importante!
+Se crea una carpeta .git, para verla hay que mostrar los archivos ocultos y OJO
+no se puede borrar
+
+* git status, muestra el estado del repositorio
+
+-On branch master => Indica la rama
+
+-Untracked files: muestra los archivos que se deben agregar
+
+* git add, para agregar los archivos al stage
+
+- se puede hacer de manera individual
+git add index.html
+
+si realizamos u n git status se mostrara ese archivo en verde, los que estan en el stage
+
+Si queremos agregar todo digitamos, git add .   => Es importante el espacio y el punto para que tome todos
+los cambios y los suba al stage
+
+git status para ver todos los archivioos en verde
+
+* git reset, elimina o quita del stage los archivos que no queremos guardar en el repositorio
+
+git restet .DS_store
+
+gi status, mostrara ese archivo en rojo indicando que no estara en el stage
+
+* git commit -m "Primer commit",  para registrar el cambio (Codigo fuente actual)
+
+Un commit representa un punto en el historial de cambios en el repositorio y contiene 
+información sobre quién realizó el cambio.
+
+Podemos ir a los commits en los tiempos, para ver recuperar el codigo en especial.
+
+* git log, muestra el logs de los commits, al autor y la fecha
+
+Si se presenta algun error con CRLF, digitar
+git config core.autocrlf true
+
+* Recuperar los commits
+
+git checkout -- . (Con el punto) => Este comando reconstruye el proyecto hasta el ultimo commit
+
+* git branch =>  Indica la rama en que se esta trabajando
+
+ una rama (branch en inglés) es una línea de desarrollo independiente. 
+ 
+Se recomienda no trabajar en la rama master, es que la que casi siempre se 
+usa para produccion
+
+* Renombrar la llama master de main de manera fglo
+
+ git branch -m master main   -> Cambia la rama de master a main
+
+con este comando cambiamos la rama de forma global y por defecto
+
+git config --global init.defaultBranch main
+
+git  config --global -e muestra la configuracion y el nombre de la rama por default
+
+para salir :q!
+
+
+
+* README
+
+ es un archivo de texto en formato Markdown que se utiliza comúnmente 
+en los proyectos de software para proporcionar información importante sobre el proyecto y su uso. 
+
+*  git commit -am "Readme actualizado"
+
+este comando hace el commit sin necesidad de digitar antes git add ., pero OJO
+solo funciona con los archivos que se le estan haciendo seguimiento, los que tienen
+U, esos NO
+
+* git log, para ver los commit
+
+
+** En ocasiones queremos realizar commits  por partes
+
+podemos realizarlo por tipos de archivos
+
+git add  *.html
+git status
+
+se pasaran al stage todos los archivos .html
+
+
+*Tener en cuenta la raiz de las carpetas,si queremos guardar algo que
+esta dentro de una carpeta se debe colocar la raiz ejempli
+
+git add js/*.js
+
+OJO, las carpetas vacias no las tiene en cuenta
+
+Para el caso en que necesitemos que se guarde la carpeta,se
+puede crear un archivo .gitkeep dentro de la carpeta
+
+* Otra manera es, con 
+
+git add css/
+
+Este guarda todo lo que este dentro de la carpeta
+
+* git status --short, solo muestra lo que se modifico
+
+* * Alias
+son una forma de crear comandos personalizados para realizar tareas comunes de manera más eficiente
+
+https://gist.github.com/Klerith/0acf18bbece7923bcac55edb71b03c2b
+
+git config  --global alias.s status --short
+
+Con este comando podemos simpificar los comandos,  con git s se estaria consultando en realidad
+
+ git status --short
+
+* git log --oneline, muestra los logs con la informacion mas corta
+
+* git log --oneline --decorate --all --graph
+Este comando muestra de una forma personalizada los logs
+
+* Utilicemos el alias del profe,
+
+git config --global alias.lg "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
