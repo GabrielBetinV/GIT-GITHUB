@@ -188,3 +188,39 @@ Este comando muestra de una forma personalizada los logs
 * Utilicemos el alias del profe,
 
 git config --global alias.lg "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
+
+*** git diff, permite ver las diferencias o actualizaciones de los archivos
+
+*** git diff --staged ,muestra los cambios realizados en lo que esta en el stage
+
+*** Corregir nombres de commit
+Con este comando  corregimos el nombre del ultimo commit
+
+git commit --amend -m "Instalaciones Actualizadas"
+
+
+*** Agregar un cambio en el ultimo commit realizado
+
+git reset --soft HEAD^
+
+asento circunflejo => ^ alt + 94 
+
+Esto lo que hace es borrar el commit anterior, y se volveria a a agregar y commits para guardar el nuevo commit
+
+Tambien se puede borrar cualquier commit anterior, colocando el indice
+
+ejemplo git reset --soft HEAD^2
+
+*** Otro uso del git commit --amend
+
+sin el  -m, muestra informacion del ultimo commit el cual con la tecla A
+podemos movernos a donde queremos editar, editamos........
+luego la tecla esc , wq! t enter para salir
+
+al revisar el log, el mensaje del ultimo commit ha cambiado
+
+**  Con este comando podemos indicar el archivo que queremos modificar,
+hacemos un commit cambiando el nombre.
+
+git commit -am "Heroes.md: Agregamos a linterna verde" 
+
