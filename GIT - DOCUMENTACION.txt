@@ -224,3 +224,78 @@ hacemos un commit cambiando el nombre.
 
 git commit -am "Heroes.md: Agregamos a linterna verde" 
 
+** git reset --soft 7e9796e, con el hash del commit podemos sacar del stage, agregar cambios y volver a hacer el commit
+
+** git reset --mixed  bbbc1cb , el mixed sirve para devolverse al commit que queramos
+
+** git reset --hard e89d6b9 , el hard a diferencia del mixed y el soft si es destructivo, borra los commit realizados 
+posterior al hast que se coloque
+
+** git reset --hard HEAD^,  con el head^ borramos el ultimo commit
+
+APESAR DE ESTO GIT NO BORRA NADA, POR ESTO:
+
+** git reflog,  muestra todo el historia completo de lo que a sucedido
+
+** Ahora podemos irnos a cualquier commits realizado
+
+git reset --hard 40a7ff1
+
+** NOTA: Si solo quiero cambiar el nombre de un archivo podemos realizar
+este comando que es practicamente mover el archivo al mismo directorio
+pero cambiando el nombre
+
+crear un archivo destruir-mundo.md 
+
+git mv .\destruir-mundo.md salvar-mundo.md
+
+realizamos el commit
+
+git logs, y veremos que se hizo el cambio del nombre del archivo
+
+
+** Remover archivos, 
+
+git rm .\salvar-mundo.md, esto elimina el archivo
+
+Ojo, esto no lo saca del staged
+
+hacemos el commit para marcarlo como eliminado
+git commit -m "Salvar-eliminado"
+
+
+** Tambien podemos eliminar archivos fuera de git,
+
+Al momento de renombrar un archivo git lo convierte en U, no le esta haciendo seguimiento
+
+Entonces para confirmar debemos agregarlo y luego hacer el commits
+
+
+** Mover a un commit sin perder el historial
+
+En resumen, git reset --soft elimina los cambios confirmados, pero mantiene
+ los cambios en el área de preparación, git reset --hard elimina todos los
+ cambios confirmados y en el área de preparación sin posibilidad de recuperación, y 
+git reset --mixed elimina los cambios confirmados y del área de preparación y l
+os coloca en el árbol de trabajo como cambios no confirmados.
+
+
+** Ignorar archivos
+
+.gitignore
+
+Creamos estos archivos y los agregamos al iognore para que no lo tenga en cuenta
+
+dist/
+node_modules/
+
+
+  *.log
+
+OJO, se debe hacer seguimiento  alarchivo .ignore
+
+***RAMAS
+
+
+
+
