@@ -297,5 +297,138 @@ OJO, se debe hacer seguimiento  alarchivo .ignore
 ***RAMAS
 
 
+** Creacion de una nueva rama
+
+git branch rama-villanos, con este comando creamos la ramma
+
+Consultamos las ramas existente con git branch
+
+** Para movernos de ramas utilizamos el comando:
+
+git checkout rama-villanos
+
+nos muestra  el mensaje de que cambiamos de ramas
+
+alrealizar git lg  se observa que la rama master y la nueva  apunta al ultimo commit
+
+Agregando el gitignore - Strider (HEAD -> rama-villanos, master)
+
+* Agregamos el cambio al stage
+
+git add .
+
+*Realizamos el commit y con git log se observa que la nueva rama apunta al commit mientras que
+la rama master esta un commit antes
+
+* 5f846d5 - (19 seconds ago) Primer commit de villanos - Gabriel Betin Valdes (HEAD -> rama-villanos)
+* 62c8a10 - (6 years ago) Agregando el gitignore - Strider (master)
+
+
+Al movernos a la rama master, el archivo villanos no aparecera, porque este
+pertenece a la rama-villanos
+
+** Si quiero unificar los cambios debo hacer un merget, pero
+debo colocarme en la rama que espera los cambios
+
+git merge rama-villanos
+
+si sale Fast-forward se indica que  no hay conflictos en los cambios
+
+Al realizar git lg obtendremos que las 2 ramas apuntando al ultimo commit
+* f3157fa - (5 minutes ago) Villanos.md: Tercer commit de villanos - Gabriel Betin Valdes (HEAD -> master, rama-villanos)
+
+
+
+** Es importante que al terminar una rama debemos borrar la rama nueva
+
+git branch -d rama-villanos
+
+En alguns ocasiones si hay cambios pendiente, git te informara 
+
+si queremos que borre todo de manera forzada agregamos un -f
+
+git branch -d rama-villanos -f
+
+** Union automatica - Merge
+
+* Creamos la nueva rama y nos movemos a ella con un solo comando
+
+ git checkout -b rama-villanos
+
+* Hacemos un cambio al arvhico de villanos y realizamos el commit
+
+git commit -am "Agregamos a Doomsday"
+
+Hacemos otro cambio y hacemos el commit
+
+* Nos movemos a la rame master y borramos un  superheroe del archivo y hacemos el commit
+
+Al realizar el git lg nos daremos cuenta de que existe una bifurcacion,
+es decir laslineas cortadas de la  izquierda muestra los commits que pertenece a la rama-villanos y que el ultimo
+commit pertenece a la rama master, 
+
+* ba42d84 - (6 minutes ago) Borramos a Daredevil - Gabriel Betin Valdes (HEAD -> master)
+| * 885c457 - (9 minutes ago) Agregamos Notas - Gabriel Betin Valdes (rama-villanos)
+| * b2fd2a0 - (12 minutes ago) Agregamos a Doomsday - Gabriel Betin Valdes
+|/
+
+Ahora vamos a  unificar, traemos los cambios de rama-villano a la master
+
+Ojo que debemos colocarnos en la rama master que es la que espera
+los cambios
+
+En este caso,  observaremos que los dos cambios se unieron
+
+git merge rama-villanos
+
+*   dbf4a53 - (44 seconds ago) Merge branch 'rama-villanos' - Gabriel Betin Valdes (HEAD -> master)
+|\
+| * 885c457 - (19 minutes ago) Agregamos Notas - Gabriel Betin Valdes (rama-villanos)
+| * b2fd2a0 - (23 minutes ago) Agregamos a Doomsday - Gabriel Betin Valdes
+* | ba42d84 - (17 minutes ago) Borramos a Daredevil - Gabriel Betin Valdes
+|/
+
+Esta union es sin conflicto, ahora veamos un ejemplo con archivos que si tienen conflictos
+
+**  Uniones con conflictos,
+
+ Se dan cuando se moidifcam los mismos fuentes entre  compañeros.
+por ejemplo se modifica de formas diferenctes e independientes unalinea
+especifica
+
+Se realiza el commit en cada una de las ramas independientes
+
+Al momento de hacer elmerge, se mostraran los codigos que tienen conflico
+
+se corrige el error y se hace el commits
+
+
+** Etiquetas Tags
+
+Las etiquetas son referencias que apuntan a puntos concretos en el historial de Git
+
+** Creando Etiquetas Tags "git tag"
+
+git tag super-release
+
+git tag, lista los tags
+
+* Tambien se puede elimnar un tag
+
+git tag -d super-release
+
+**Creamos un tag con nombre esoecifico
+ 
+ git tag -a v.1.0.0 -m "Version 1.0.0 lista"
+
+** Para ver el tags con iformacion completa
+
+git show v.1.0.0
+
+
+
+
+
+
 
 
