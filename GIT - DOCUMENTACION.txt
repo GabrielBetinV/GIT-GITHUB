@@ -426,6 +426,498 @@ git tag -d super-release
 git show v.1.0.0
 
 
+** Git Stash
+
+Git Stash es una funcionalidad de Git que permite a los desarrolladores guardar 
+temporalmente los cambios que han realizado en su directorio de trabajo sin necesidad 
+de hacer un commit.
+
+Es un bobeda para guardar el codigo temporalmente
+
+No se recomienda, guardar muchos Stash
+
+Descargar el repositorio del profe y realizar un cambio en el archivo
+misiones,md
+
+- Si nos solicitan desplegar, y tengo cambios pendientes y no quiero que se borren mis cambios
+es en donde podemos hacer el stash, péro OJO, si estamos trabajando con ramas lo recomendable
+es no utilizar stash, ps se supone que la rama main tiene el codigo actualizado y tu estas
+trabajando en una rama diferente
+
+git stahs
+
+importante tener en cuenta que no he realizado commits
+
+git stash list => Con este comando se listan los stash
+
+Se recomienda tener un solo stash
+
+
+Ahora, Modifiquemos el Archivo README y realizamos el commit
+
+
+Realicemos un  Git lg, observaremos el stahs
+
+* 4c11a90 - (27 seconds ago) Readme Update - Gabriel Betin Valdes (HEAD -> master)
+| * 24d16eb - (3 minutes ago) WIP on master: 5440fe5 Resolviendo conflictos - Gabriel Betin Valdes (refs/stash)
+
+
+** Para recuperar el stash realizamos:
+
+git stash pop, tomara el ultimo stash
+
+Este comando elimina el stash es decir, al  realizar git stash list no lo veremos
+y dejara el cambio que hicimos en README, porque este no tiene conflicto.
+
+Ahora debemos realizar el commit, para confirmar la modificacion de misiones
+
+** Stash con conflictos
+
+Realizamos un cambio en el archivo readme agregando texto cualquiear
+
+Aplicamos el git stash
+
+Modificamos el titulo del Readme y hacemos commit
+git commit -am "Readme Atualizado: Titulo"
+
+
+Ahora vamos a recuperar el stash,  git stash
+
+Al ejecurar git lg observaremos que se recupero el texto del readme e informa
+que se modifico el titulo
+
+Ahopra realizamos el commit para resolver el problema
+
+git commit -am "Merge con Stash"
+
+--  Este es otro caso mas complejo
+
+Modificamos el titulo  de readme y realizamos un git stash
+
+Modificamos otravez el titulo
+
+git commit -am "Readme Update: Titulo objetivo"
+
+Al recuperar los cambios se mostrara lapantalla con el conflicto
+
+git stash pop
+
+Muestra los dos titulos, debemos decidir cual de los dos
+
+O borrar y escribir lo que queramos
+
+Ahora debemos hacer el commit
+
+git commit -am "Readme Update: Titulo objetivo sin conflicto"
+
+** stash avanzado
+
+git stash clear =>  Borra los stash
+
+Si queremos recuperar algo, podemos utilizar gut reflog
+
+-- Ahora, Modifiquemos el archivo villanos agregando nombres
+cada  vez que agreguemos uno ejecutamo git stash
+
+Este punto,se grabaron 3 stahs, git stash list
+
+stash@{0}: WIP on master: 5f1eba3 Readme Update: Titulo objetivo sin conflicto
+stash@{1}: WIP on master: 5f1eba3 Readme Update: Titulo objetivo sin conflicto
+stash@{2}: WIP on master: 5f1eba3 Readme Update: Titulo objetivo sin conflicto
+
+la posicion {0} es el ultimo stash realizado
+
+Si ejecutamos git stash pop, este eliminara todo y establecera  {0}
+
+- Para recuperar uno en especifico
+
+git stash apply stash@{2} OJO ami nome funciono
+asi si git stash apply 2
+
+Si lo grabamos al stash, git stass
+
+y  consultamos la lista git stash list se mostraran 4
+stash@{0}: WIP on master: 5f1eba3 Readme Update: Titulo objetivo sin conflicto
+stash@{1}: WIP on master: 5f1eba3 Readme Update: Titulo objetivo sin conflicto
+stash@{2}: WIP on master: 5f1eba3 Readme Update: Titulo objetivo sin conflicto
+stash@{3}: WIP on master: 5f1eba3 Readme Update: Titulo objetivo sin conflicto
+
+- Si queremos entonces eliminar uno y especificamos el drp y su posicion
+git stash drop 0
+
+- para ver un stash en particular
+
+git stash show 0
+
+ villanos.md | 1 +
+ 1 file changed, 1 insertion(+)
+
+-- Si queremos ver mas detalle de todos los stash
+
+git stash list --stat
+
+Se recomienda siempre borrar los stash
+
+*** Git rebase, 
+
+Git rebase es una operación que permite reescribir el historial de confirmaciones (commits) 
+en una rama. Con el comando git rebase, puedes mover, combinar o eliminar 
+confirmaciones para crear una secuencia de commits más limpia y organizada.
+
+
+- Descargamos el repositoriodel profe, 08-demo-rebase
+
+- Si hacemos un git lg, observaremos que la rama misiones completadas no esta unida a la rama master
+
+* 158ba9e - (6 years ago) Se agrego a la liga: Volcán Negro - Strider (HEAD -> master)
+* 300c014 - (6 years ago) Misiones nuevas agregadas - Strider
+| * 8e755a3 - (6 years ago) Actualizamos dos misiones completadas al momento - Strider (rama-misiones-completadas)
+| * cc55aaf - (6 years ago) Agregamos el archivo de las misiones completadas - Strider
+|/ 
+
+-  Si queremos unir podemos hacer un merge, pero la forma mas sencilla es hacer un rebase
+
+- Debo posicionarme en la rama en la que quiero que se muevan los cambios,
+
+En este caso  la rama de misiones, nos posicionamos
+
+git checkout rama-misiones-completadas
+git branch
+
+- Hacemos el rebase
+
+git rebase master
+
+Ahora los commits de la rama-misiones-completadas, contiene todos los commits del master
+
+* 62deb15 - (6 years ago) Actualizamos dos misiones completadas al momento - Strider (HEAD -> rama-misiones-completadas)
+* 804f8a6 - (6 years ago) Agregamos el archivo de las misiones completadas - Strider
+* 158ba9e - (6 years ago) Se agrego a la liga: Volcán Negro - Strider (master)
+* 300c014 - (6 years ago) Misiones nuevas agregadas - Strider
+* acea380 - (6 years ago) Actualización de las misiones - Strider
+* 31efae8 - (6 years ago) Retomando el trabajo que guarde en el stash - Strider
+* 8239e26 - (6 years ago) Cambios de emergencia en el README - Strider
+* 7dd23f1 - (6 years ago) Agregamos más misiones - Strider
+* 5b0c87f - (6 years ago) Modificaciones en el README de emergencia - Strider
+*   5440fe5 - (6 years ago) Resolviendo conflictos - Strider (tag: v1.0.0)
+
+
+- Si queremos que el master tenga los cambios de rama-misiones-completadas debo hacer un merge desde
+el master
+
+git checkout master
+
+git merge rama-misiones-completadas
+
+* 62deb15 - (6 years ago) Actualizamos dos misiones completadas al momento - Strider (HEAD -> master, rama-misiones-completadas)
+* 804f8a6 - (6 years ago) Agregamos el archivo de las misiones completadas - Strider
+* 158ba9e - (6 years ago) Se agrego a la liga: Volcán Negro - Strider
+* 300c014 - (6 years ago) Misiones nuevas agregadas - Strider
+* acea380 - (6 years ago) Actualización de las misiones - Strider
+* 31efae8 - (6 years ago) Retomando el trabajo que guarde en el stash - Strider
+* 8239e26 - (6 years ago) Cambios de emergencia en el README - Strider
+* 7dd23f1 - (6 years ago) Agregamos más misiones - Strider
+* 5b0c87f - (6 years ago) Modificaciones en el README de emergencia - Strider
+
+Ahora eliminamos la rama de misiones, porque ya no la necesitamos
+
+git branch 
+git branch -d rama-misiones-completadas
+git branch 
+
+
+*** Rebase Squash
+
+ Es una operación de Git que combina varios commits en uno solo durante un proceso de rebase.
+ El rebase es una forma de integrar cambios de una rama a otra de manera más limpia y
+ organizada que fusionar las ramas.
+
+
+- Hacemos este cambio, 
+
+Cortamos 6. Tratar de investigar que trama el Flash Reverso del archivo misiones
+y las pasamos a misiones completadas
+
+- Hacemos un commit,
+git commit -am "Actualizamos misiones completadas"
+
+Al realizar git lg, se observara que los dos ultimos commit tienen el mismo comentario
+de actualizaciones, encontes se requiere unificar los commits
+
+Entonces, lo realizaremos de esta forma interactiva seleccionando la cantidad
+de commits a unificar
+
+git rebase -i HEAD~4
+
+Se muestra esta pantalla, mostrando los 4  ultimos commits y unos commandos opcionales para utilizar.
+
++
+pick 158ba9e Se agrego a la liga: Volcán Negro
+pick 804f8a6 Agregamos el archivo de las misiones completadas
+pick 62deb15 Actualizamos dos misiones completadas al momento
+pick 9efa640 Actualizamos misiones completadas
+
+# Rebase 300c014..9efa640 onto 300c014 (4 commands)
+#
+# Commands:
+# p, pick <commit> = use commit
+# r, reword <commit> = use commit, but edit the commit message
+# e, edit <commit> = use commit, but stop for amending
+# s, squash <commit> = use commit, but meld into previous commit
+# f, fixup [-C | -c] <commit> = like "squash" but keep only the previous
+#                    commit's log message, unless -C is used, in which case
+#                    keep only this commit's message; -c is same as -C but
+#                    opens the editor
+# x, exec <command> = run command (the rest of the line) using shell
+# b, break = stop here (continue rebase later with 'git rebase --continue')
+# d, drop <commit> = remove commit
+# l, label <label> = label current HEAD with a name
+# t, reset <label> = reset HEAD to a label
+# m, merge [-C <commit> | -c <commit>] <label> [# <oneline>]
+# .       create a merge commit using the original merge commit's
+# .       message (or the oneline, if no original merge commit was
+# .       specified); use -c <commit> to reword the commit message
+#
+# These lines can be re-ordered; they are executed from top to bottom.
+#
+# If you remove a line here THAT COMMIT WILL BE LOST.
+#
+# However, if you remove everything, the rebase will be aborted.
+#
+
+Utilizaremos el squash o s, que toma 2 cosas y se fucionen - unirlas
+
+Entonces, con la tecla a hacemos la insersion nos colocamos en el pick que queremos unificar y cambiamops
+a squash o s
+
+Ojo el unificara el seleccionado con el commit anterior
+
+pick 158ba9e Se agrego a la liga: Volcán Negro
+pick 804f8a6 Agregamos el archivo de las misiones completadas
+pick 62deb15 Actualizamos dos misiones completadas al momento
+s 9efa640 Actualizamos misiones completadas
+
+salimos con 
+
+esc, :wq y enter
+
+Ahora nos mueve a otra pantalla,
+
+# This is a combination of 2 commits.
+# This is the 1st commit message:
+
+Actualizamos dos misiones completadas al momento => ESTE ES EL MENSAJE QUE TENDRA EL COMMITS
+
+# This is the commit message #2:
+
+Actualizamos misiones completadas
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# Author:    Strider <fernando.herrera85@gmail.com>
+# Date:      Fri Jun 23 15:44:41 2017 -0600
+#
+# interactive rebase in progress; onto 300c014
+# Last commands done (4 commands done):
+#    pick 62deb15 Actualizamos dos misiones completadas al momento
+#    squash 9efa640 Actualizamos misiones completadas
+# No commands remaining.
+# You are currently rebasing branch 'master' on '300c014'.
+#
+# Changes to be committed:
+#       modified:   misiones-completadas.md
+#
+
+salimos con 
+
+esc, :wq y enter
+
+
+** Rebase - Reword
+
+ se utiliza para cambiar el mensaje de un commit durante un rebase interactivo en Git.
+
+git rebase -i HEAD~4
+
+Se muestra la pantalla para empezar a editar
+
+pick 300c014 Misiones nuevas agregadas
+pick 158ba9e Se agrego a la liga: Volcán Negro
+pick 804f8a6 Agregamos el archivo de las misiones completadas
+pick 051e452 Actualizamos dos misiones completadas al momento
+
+OJO recuerda digitar la tecla "a" para poder editar
+
+Realizamos el cambio del nombre y de pick a r para el reword
+
+pick 300c014 Misiones nuevas agregadas
+pick 158ba9e Se agrego a la liga: Volcán Negro
+r 804f8a6 Cambios - Agregamos el archivo de las misiones completadas
+r 051e452 Cambios - Actualizamos dos misiones completadas al momento
+
+Se muestra esta pantalla, y podemos cambiar el nombre del commit
+
+Agregamos el archivo de las misiones completadas
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# Author:    Strider <fernando.herrera85@gmail.com>
+# Date:      Fri Jun 23 15:44:11 2017 -0600
+#
+# interactive rebase in progress; onto acea380
+# Last commands done (3 commands done):
+#    pick 158ba9e Se agrego a la liga: Volcán Negro
+#    reword 804f8a6 Cambios - Agregamos el archivo de las misiones completadas
+
+
+salimos con 
+
+esc, :wq y enter
+
+Esta pantalla sale las veces o cantidad de rewords que estamos haciendo, en este caso
+2 veces
+
+git log, observaremos que se camiaron los nombre del commits
+
+d63ba02 - (6 years ago) nddos misiones completadas al momento - Strider (HEAD -> master)
+* bfd006e - (6 years ago) Agregamos el archivo de las misiones completadas Nuevo cambio - Strider
+* 158ba9e - (6 years ago) Se agrego a la liga: Volcán Negro - Strider
+* 300c014 - (6 years ago) Misiones nuevas agregadas - Strider
+* acea380 - (6 years ago) Actualización de las misiones - Strider
+* 31efae8 - (6 years ago) Retomando el trabajo que guarde en el stash - Strider
+* 8239e26 - (6 years ago) Cambios de emergencia en el README - Strider
+* 7dd23f1 - (6 years ago) Agregamos más misiones - Strider
+* 5b0c87f - (6 years ago) Modificaciones en el README de emergencia - Strider
+*   5440fe5 - (6 years ago) Resolviendo conflictos - Strider (tag: v1.0.0)
+
+
+*** Rebase - Edit
+
+Realizaremos los siguientes cambios a 3 Archivos
+misiones, villanos y readme
+
+En este caso, queremos hacer 3 commits diferentes
+
+si hacemos git s para ver los archivos modificados
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   README.md
+        modified:   misiones.md
+        modified:   villanos.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+Pordiamos hacer checkoout por archivos para revertir los cambios asi
+
+git checkout -- .\README.md
+
+
+En este punto tenemos un commits con los dos cambios,porque 
+revertimos  1 de los 3 que hicimos
+
+Si queremos separar el commits que tiene los dos cambios podriamos hacer.
+
+- Reset de los commits hasta llegar el primer cambio, pero ahora hacemos el rebase
+interactivo
+
+git rebase -i HEAD~3
+
+Vamos alos utlimos 3 commit
+
+editamos con "a"
+
+vamos al commit que queremos editar
+
+por ejemplo, reemplzamos a edit
+
+pick 300c014 Misiones nuevas agregadas
+pick 158ba9e Se agrego a la liga: Volcán Negro
+edit 804f8a6 Cambios - Agregamos el archivo de las misiones completadas
+
+al digiitar git status nos indicara que estamos en un rebase
+
+interactive rebase in progress; onto 158ba9e
+Last commands done (3 commands done):
+   pick d63ba02 nddos misiones completadas al momento
+   edit dea1269 Commits
+  (see more in file .git/rebase-merge/done)
+No commands remaining.
+You are currently editing a commit while rebasing branch 'master' on '158ba9e'.
+  (use "git commit --amend" to amend the current commit)
+  (use "git rebase --continue" once you are satisfied with your changes)
+
+Luego de esto debemos digitar continue para confirmar
+
+git rebase --continue, pero antes podemos hacer un reset del utlimo commit
+
+git reset HEAD^
+
+Unstaged changes after reset:
+M       misiones.md
+M       villanos.md
+
+Me baja del stage las dos modificaciones, es el opunto antes de que hicimos el commit
+
+Ahoa si separemow los commit
+
+ git add villanos.md
+ git commit -m "Agregamos villanos" 
+
+ git add misiones.md
+git commit -m "Agregamos misiones"
+
+Ahora vemos que se realizaron los 2 commits
+
+* 6e3c803 - (28 seconds ago) Agregamos misiones - Gabriel Betin Valdes (HEAD)
+* 7505db9 - (46 seconds ago) Agregamos villanos - Gabriel Betin Valdes
+| * dea1269 - (18 minutes ago) Commits - Gabriel Betin Valdes (master)
+|/
+* d63ba02 - (6 years ago) nddos misiones completadas al momento - Strider
+* bfd006e - (6 years ago) Agregamos el archivo de las misiones completadas Nuevo cambio - Strider
+* 158ba9e - (6 years ago) Se agrego a la liga: Volcán Negro - Strider
+* 300c014 - (6 years ago) Misiones nuevas agregadas - Strider
+* acea380 - (6 years ago) Actualización de las misiones - Strider
+* 31efae8 - (6 years ago) Retomando el trabajo que guarde en el stash - Strider
+* 8239e26 - (6 years ago) Cambios de emergencia en el README - Strider
+* 7dd23f1 - (6 years ago) Agregamos más misiones - Strider
+* 5b0c87f - (6 years ago) Modificaciones en el README de emergencia - Strider
+
+PERO, las ramas estan separadas
+
+Al ralizar git status,  nos indica que todavia estamos en rebase interactivo
+
+interactive rebase in progress; onto 158ba9e
+Last commands done (3 commands done):
+   pick d63ba02 nddos misiones completadas al momento
+   edit dea1269 Commits
+  (see more in file .git/rebase-merge/done)
+No commands remaining.
+You are currently editing a commit while rebasing branch 'master' on '158ba9e'.
+  (use "git commit --amend" to amend the current commit)
+  (use "git rebase --continue" once you are satisfied with your changes)
+
+nothing to commit, working tree clean
+
+git rebase --continue
+
+Al realizar el git lg,  se muestra que realmente separamos los commits
+
+* 6e3c803 - (3 minutes ago) Agregamos misiones - Gabriel Betin Valdes (HEAD -> master)
+* 7505db9 - (3 minutes ago) Agregamos villanos - Gabriel Betin Valdes
+* d63ba02 - (6 years ago) nddos misiones completadas al momento - Strider
+* bfd006e - (6 years ago) Agregamos el archivo de las misiones completadas Nuevo cambio - Strider
+* 158ba9e - (6 years ago) Se agrego a la liga: Volcán Negro - Strider
+* 300c014 - (6 years ago) Misiones nuevas agregadas - Strider
+* acea380 - (6 years ago) Actualización de las misiones - Strider
+* 31efae8 - (6 years ago) Retomando el trabajo que guarde en el stash - Strider
+* 8239e26 - (6 years ago) Cambios de emergencia en el README - Strider
+* 7dd23f1 - (6 years ago) Agregamos más misiones - Strider
+* 5b0c87f - (6 years ago) Modificaciones en el README de emergencia - Strider
+*   5440fe5 - (6 years ago) Resolviendo conflictos - Strider (tag: v1.0.0)
 
 
 
