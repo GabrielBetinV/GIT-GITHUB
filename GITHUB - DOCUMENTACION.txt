@@ -1,0 +1,72 @@
+** Consultar los remote, que tenemos configurados en el proyecto para
+hacer el push
+
+git remote -v
+
+origin  https://github.com/GabrielBetinV/GIT-GITHUB.git (fetch) => Obtener
+origin  https://github.com/GabrielBetinV/GIT-GITHUB.git (push)  => Enviar
+
+** git push -u origin master,  esto es para enviar el cambio o codigo fuente a 
+git hub a la rama master
+
+Despues de este comando, solicita las credenciales, perola idea es guardar
+por defecto para que no solicite siempre:
+
+https://docs.github.com/es/get-started/getting-started-with-git/caching-your-github-credentials-in-git#platform-windows
+
+** Crear repositiorio y  Realizar el primer push
+
+Al crear el primer repositorio, Giut HUb muestra enventana como realizar el push de dos
+mnera
+
+=> Esta forma es cuando no tenemos inicializado git ni agregado ni commits en el proyecto
+
+…or create a new repository on the command line
+echo "# liga-justicia" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/GabrielBetinV/liga-justicia.git
+git push -u origin main
+…or push an existing repository from the command line
+git remote add origin https://github.com/GabrielBetinV/liga-justicia.git
+git branch -M main
+git push -u origin main
+
+=> Esta forma es cuando solo queremos realizar push
+
+git remote add origin https://github.com/GabrielBetinV/liga-justicia.git
+git branch -M main
+git push -u origin main 
+
+La proxima vez,  solo digitamos git push
+
+
+** Push de los tags
+
+al digitar git tag, listaremos los tags guardados en el repositorio
+
+Los tags se deben subirlos manual, pueden ser unopor uno o todos a las vez
+
+git push --tags => Con este codigo  subimos los tags al respositorio
+
+Si vamos a Git HUb, se observaran los tags con estas opciones.
+
+- Descargar en Zip el codigo fuente de ese momento
+- Click en el nuemro del commit,  se abre una ventana, para ver los cambios en su miomento (split-unified)
+- realizar comentarios
+- Transformar en release
+
+NOTA =>  Los releases una forma específica de utilizar los tags. Un release es 
+una versión específica y estable del proyecto que se pone a disposición de 
+los usuarios o colaboradores
+
+Se crea un tag específico para marcar ese punto en la historia del repositorio
+ y se le asigna un número de versión o un nombre descriptivo.
+
+
+Es para indicar que es el codigo de producciom
+
+
+
