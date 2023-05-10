@@ -68,5 +68,74 @@ Se crea un tag específico para marcar ese punto en la historia del repositorio
 
 Es para indicar que es el codigo de producciom
 
+*** Pull de los cambios realizados en el Git HUb
+
+-Cambiar algo desde GitHUb => Se agrega comentarios al archivo readme
+
+git pull, tener encuenta que ya tenemos previamente configurado ek origen
+
+git pull origin main
+
+Observaremos que el archivo readme esta actualizado con el cambio que realizaron en 
+Git hub
+
+** Warning - Pulling without reconcile strategy
+
+", indica que se está realizando una operación de extracción (pull) en un contexto 
+donde no se está aplicando una estrategia de reconciliación.
+
+Hay que seleccionar una estrategia
+
+git config --global pull.ff only
+
+
+Observamos la configuracion
+
+git config --global -e
+
+al momento de realizar git lg observaremos que el HEAD apuntara  al main y al origin/main de github
+
+* 6c5ee1d - (6 minutes ago) Update README.md - GabrielBetinV (HEAD -> main, origin/main)
+* c3e22b9 - (6 years ago) Agregamos a Deadshot - Strider (tag: v2.0.0)
+* 69e85f8 - (6 years ago) Actualizaciones al readme - Strider
+
+** Clonar Repositorio
+
+- Borrar el proyecto de heroes
+
+- Vamos a GitHUb y vamos al boton Code para validar las opciones de clonar
+
+- En la opcion de HTTP y copiamos el enlace https://github.com/GabrielBetinV/liga-justicia.git
+
+- Abrimos la consola en la carpeta donde queremos guiardar el repositorio
+
+- Digitamos
+
+git clone https://github.com/GabrielBetinV/liga-justicia.git
+
+Listo, se guardar el proyecto importandola de Github
+
+Tener en cuenta que los archivos que al momento de hacer Push no se guardan
+lo de gitignore, pasa igual con el pull
+
+** Subir cambios locales al remoto
+
+- Modificamos el readme agregando nuevos comentarios
+
+- Realizmos el add y commit
+
+git commit -am "Cambio Readme Desde el local"  
+
+Al realizar el git log, nos daremnos cuenta que el commit esta en el main noen elorigin main
+
+* ba010be - (3 seconds ago) Cambio Readme Desde el local - Gabriel Betin Valdes (HEAD -> main)
+* 6c5ee1d - (16 minutes ago) Update README.md - GabrielBetinV (origin/main, origin/HEAD)
+* c3e22b9 - (6 years ago) Agregamos a Deadshot - Strider (tag: v2.0.0)
+* 69e85f8 - (6 years ago) Actualizaciones al readme - Strid
+
+- Realizamos el push para subir los cambios
+
+NOTA => Tener en cuenta que se tiene configurado elpull para que se realice siempre y cuando
+se tenga un fast forward, es decir que no se tenga conflictos en los cambios,
 
 
