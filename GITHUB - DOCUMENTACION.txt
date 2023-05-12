@@ -138,4 +138,117 @@ Al realizar el git log, nos daremnos cuenta que el commit esta en el main noen e
 NOTA => Tener en cuenta que se tiene configurado elpull para que se realice siempre y cuando
 se tenga un fast forward, es decir que no se tenga conflictos en los cambios,
 
+*** Git pull Rebase
+
+Si tenemos un conflicto, digitamos esto  ya que habiamos configurado que hiciera elpull siempre uy cuando
+exita un fast foward
+
+git config pull.rebase true
+git pull
+
+Esto nos mostrara el conflicto para solucionar
+
+al realizar git branch observaremos que no estamos en ninguna rama, porque estamos en un
+rebase
+
+(no branch, rebasing main)
+  main
+
+
+Hacemos un commit, si le doy git status nos mostrara que estamos en el rebase aun
+
+git rebase --continue para terminar
+
+git push para enviar el proyecto con los commits unificado
+
+
+NOTA =>  Podemos configuar el pull rebase de manera global
+
+git config --global pull.rebase true
+
+
+
+** Markdown y Github Markdown
+
+Etiquetas, es como el html 
+
+# Encabezado 1
+## Encabezado 2
+### Encabezado 3
+
+
+**Texto en negrita**
+*Texto en cursiva*
+***Texto en negrita y cursiva***
+
+
+- Elemento de lista 1
+- Elemento de lista 2
+- Elemento de lista 3
+
+
+1. Elemento numerado 1
+2. Elemento numerado 2
+3. Elemento numerado 3
+
+[Texto del enlace](URL del enlace)
+
+![Texto alternativo](URL de la imagen)
+
+`Código en línea`
+
+> Esto es una cita.
+
+---
+
+| Encabezado 1 | Encabezado 2 |
+|--------------|--------------|
+| Celda 1      | Celda 2      |
+| Celda 3      | Celda 4      |
+
+
+Markdown de GitHub
+Tutorial de Markdown:
+
+https://www.markdowntutorial.com/
+
+GitHub Markdown sheet
+https://docs.github.com/es
+
+Emojis de GitHub
+https://www.webfx.com/tools/emoji-cheat-sheet/
+
+
+*** Buscar arcivos => Go to file
+
+*** Raw, Blame, History, Edit and Delete
+
+Raw => Ver archivo en crudo
+
+Blame => VEr quien hizo el cambio
+
+*** Crear archivo con Pull Request
+
+Crear archivo en Guit HUB dentro de la carpeta historia
+
+Al darle Crear Commits se abre una ventana y se seleeccionar un commits con pull request
+
+Click en proponer cambios
+
+Se abre la ventana Open a pull request
+
+Seleccionarla rama, tambien se puede unir la rama
+
+Crear pull rquest
+
+Al duirigirnos a la pestaña Pull request,  se muestra que esta pendiente
+
+Hasta que no se confirme el opull request no se pasa a la rama main
+	
+Para confirmar Crear merge pull requets => COnfimar merge
+
+Se puede eliinar y restaurar los pull request
+
+Ahora, podemos hacer pull en el repositorio local para traer el  cambio
+
 
