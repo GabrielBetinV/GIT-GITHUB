@@ -251,4 +251,34 @@ Se puede eliinar y restaurar los pull request
 
 Ahora, podemos hacer pull en el repositorio local para traer el  cambio
 
+** Git fetch
 
+es un comando utilizado en Git para descargar los últimos cambios de 
+un repositorio remoto sin fusionarlos con la rama de trabajo actual.
+
+Se utiliza solo pra actualizar referencias,es decir, trae los c<mbios pero nofusionan la rama
+
+** Flujo de Git hub
+
+https://blog.mergify.com/understanding-the-github-pull-request-workflow/
+
+** Fork, clone  y colaboraciones
+
+- Git Clone, clona el repositorio y si nos agregan como colaboradores, podriamos hacer
+Push al repositorio
+
+ un "fork" se refiere a una copia independiente de un repositorio en un usuario diferente.
+ Cuando haces un "fork" de un repositorio en GitHub, estás creando una réplica completa 
+del repositorio en tu propia cuenta de GitHub. Esta copia es independiente del repositorio 
+original y puedes modificarla, agregar nuevos cambios y contribuir al proyecto sin afectar 
+el repositorio original.
+
+** Cloning y fork
+
+Click en el boton Fork y creamos el Fork, de inmediato se creara el repositorio como copia ami GitHub
+
+Esto es para, poder clonar
+
+git clone https://github.com/GabrielBetinV/legion-del-mal.git
+
+Ahora si, nos convetimos en colaboradoes, y con el clon delproyecto podriamnos hacer commits, pushc rtc...
