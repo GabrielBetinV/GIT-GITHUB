@@ -282,3 +282,196 @@ Esto es para, poder clonar
 git clone https://github.com/GabrielBetinV/legion-del-mal.git
 
 Ahora si, nos convetimos en colaboradoes, y con el clon delproyecto podriamnos hacer commits, pushc rtc...
+
+
+** Pull Request remitente (El que quiere colaborar)
+
+- Vamos al repositorio clonado  en GitHub y le  hacemos un cambio
+- Click en el boton Contribute
+- open pull request
+- create pull request
+- se envia la solicitud pull request al dueño del repositorio
+GabrielBetinV wants to merge 1 commit into Klerith:master from GabrielBetinV:master
+
+
+** Pull Request destinatario (Dueño del repositorio)
+
+- En la pestaña de pUll request se muestran los pull request recibidos
+- En los commits, o lineas se pueden comentar alguna observacion
+- En el boton FUIles Changed podemos crear comentarios, aceptar osolicitar cambios
+-  El usuario  que solicito puede ver los cambios solicitados
+-  El usuario que solicito debe realizar ek cambio o revertir archivos con el commit anterior o cambiar o hacer push
+- El usuario remitente, le da click en Review changes , donde podra comentar, aceptar o solicitar mas cambios
+- Despues se pueden hacer squas, crear merge commit o rebase (squas and merge)
+- create merge
+-Mergue pull request
+-  COnfirmar => confirm squash and merge
+
+
+**  Actualizar Fork
+
+- Desde el repositorio padre(Main),  Al lado de la opcion Contribute esta la opcion de  =>  Fetch Upstream para dos casos
+
+1. Comparar el cambio
+2. Hacer el Mergue
+
+- Tambien se puede hacer estas dos opciones desde la consola asi:
+
+git remote add upstream "patch del repositorio"
+git pull upstream "rama"
+aceptar cambios o cualquier de las opciones
+git commit -am  "dsdsdsdsd"
+git rebase -continue
+git push
+
+
+** Flujos de trabajo
+
+- Todos en la misma rama
+- Por ramas
+- Pull Request
+
+** Tarea-Practica de los flujos
+
+- Descargar Zip de => https://github.com/klerith/avengers (Esto no trae el historial de  commits porque no es
+clone ni pull)
+
+- Abrimos el proyecto en VS Code
+
+- Crear repositorio en Guthub
+
+- Iniciamos Git en el proyecto y lo pusheamos a elrepositorio
+
+
+- Creamos un tags de prueba
+git tag -a v0.0.1 -m "Version Alpha"
+git push --tags
+
+-  Editamos el tags para pasarlo a  Release
+
+** Flujo de trabajo mediante pull request - Feature Branch
+
+- Crear una rama del proyecto anterior y nos pasamos de una vez
+
+ git checkout -b rama-villanos
+
+- Como ya estamos en la rama, creamos un archivo villano.md y realizamos cambios
+Agregamos y hacemos commit
+
+- Subir rama con los cambios, este comando es una sola vez
+
+ git push --set-upstream origin rama-villanos	
+
+
+- En Git hub, se mostrara el mensaje de la nueva rama  y un boton para Comparar p hacer pull request
+
+- Click en el boton de comparar y pull requets -  Able to merge. These branches can be automatically merged.
+
+- Hacemos el pull request
+
+- Antes del merge pull request, podriamos hacer cambios en el codigo y volver a hacer pull
+y como todavia no hay merge van a aparecer los nuevos commits
+
+- Hacemos el merge y confirmamos
+
+- Si queremos podemos ir a ramas y borrar las que queremos desdfe git hub
+
+- Como ya realizamos el merge, podemos ir al repositorio local, colocarnos en la rama main y realizar el pull
+para tener el codigo actualizado
+
+- Si queremos podemos borrar la rama en el repositorio local
+git branc -D rama-villanos
+
+ Si rama no se ha unido, se mostrara el mensaje de error.
+
+git status -sb => Esto muestra  el status y la rama
+
+Podemos actualizar el alias git s para que mustre esa informacion
+
+git config --global -e
+Entramos al modo de edicion, buscamos el alias y editamos la linea con la letra a
+Editamos y esc
+:wq!
+
+- Al digitar git s se mostraran los comandos que editamos
+
+** Limpiar ramas innecesarias
+
+- Nos movemos a la rama main o la que necesito guardar
+- HAcemos pull para tener los ultimos cambioss
+- git remote prune origin => Boprrar las ramas
+- git branch -a ya no mostrara los remotos mostrara la nueva rama
+
+
+
+** Freature Branch - Revisar el trabajo del compañero
+
+- Las ramas se pueden crear desde Git HUb, desede la opcion de buscar ramas y
+escribimios el nombre, como el no lo encuentra te dice que debes crear
+
+OJO esto es si eres el dueño del repositorio
+
+- Creamos un nuevo archivo estando en la  nueva rama
+
+- Vamos al repositorio local,  realizamos un git pull para traer los cambios y la nueva rama
+
+En el caso de que no se la traiga , git pull --all
+
+Revisamos en git branch las ramas existente
+
+No tenemos los cambios, pero debemos hacer lo siguiete
+
+git branch -a,  => muestra todos los remotos
+Nos pasamos a ese remoto para ver los cambios
+git checkout rama-misiones
+
+ya podriamos realizar los cambios o revisar el trabajo de los compañeros
+
+Hacemos push si es necesario en esa rama
+
+
+
+** Rama de produccion
+
+Este caso es cuando el usuario dice que no va a pagar mas mantenimiento
+o actualizaciones del proyecto
+
+- crear una nueva rama, git checkout -b rama-kitkat 
+- Hacemos cambios, add y commit
+-  Reailzamos elpush del ultimo cambio en la nueva rama  git push --set-upstream origin rama-kitkat
+- Creamos el tags git tag -a v1.0.0 -m "Ultima version para el kitkat"
+- realizamos el push del tags git push --tags
+- Convertimos eltags en release
+
+Es importante realizar el release por si alguien borra la rama, nos queda esa copia para
+poder restaurar las versiones
+
+Para eso vamosa ver como recuperar esta rama de produccion
+
+** Recuperar rama
+
+hay varias opciones
+
+1. Realizar checkout al tags
+
+git checkout v1.0.0
+realioar el push a Git HUb
+
+2. Realiarlo desde Git hub
+para esoborramos larama local y en la nube asi
+
+local => git branch -D rama-kitkat
+
+nube => git push origin :rama-kikat  
+ 
+Vamos al repositorio y damosclick como sifueramos a cambiar lrama
+seleccionamos tags y buscams el tags
+digitamos elnombre de la rama de como queremos crearla
+crear rama apartir de tags
+
+
+
+
+
+
+
