@@ -1,0 +1,114 @@
+- Validar si tenemos la opcion activaad  de issues en la pestaña de setting
+
+En GitHub, los "issues" (problemas o incidencias, en español) son una funcionalidad 
+utilizada para realizar un seguimiento de problemas, sugerencias o tareas relacionadas con
+ un repositorio de software.
+
+
+** Crear un issues con el boton New Issues
+
+Colocamnos el titulo y el cuepro de la pregunta
+
+- Submit Neew issues, para subir el issues
+
+- Podemos agregar comentarios con el boton comments
+
+Si tenemos una lista dentro del comentario, Git hub incorporo una forma de convertir esos
+ check en  nuevos issues
+
+** Cerrar un issue
+
+Se pueden de dos maneras:
+
+1. Creando cun comentario y click en el boton close
+
+Tambien podemos bloquear las conversaciones, pero como administradores
+si podemos seguir comentando
+
+los issues cuando se crean tiene un numero de referencia por ejemplo #3, si queremos
+podemos hacer cambios en el loca, y hacer el push.
+
+En git hub vamos al cambio, y con el + agregamos uncomentario, colocamos el hash del issues #3 y se convierte ciomo 
+un enlace en el comentario que llevara al usuario al issues.
+
+Como respuesta podemos hacer un comentario y compuiamos los hash del commits, para que el usuario
+vaya al URL del commits para ver que se cambio.
+
+Como administradores podemos borrar las issues con Delete issues
+
+2. Cerrar el issues con un commit
+
+-  Hacemos el cambio en el local
+- git add .
+- git commit -am "Fixed #5: comentarios,,,,,,,,,,,,,,,,,,,,"
+- git push
+
+** Issues Template
+
+Podemos configurar untemplate para los issues
+
+Setting  -> issues - > Set up templates
+
+add template - select -> Bug report etc
+
+Propose changes -> Commit changes
+
+Al momento de crear un issues en el repositorio, se muestrala opcion de utilizar el
+template o en blanco
+
+
+** Labels y etiquetas
+
+Si vamos a crear un issues, tenemo un boton llamado  Labels
+
+Al darle click tendremos unos label ya creados
+
+podemos crear un label nuevo al estilo que queramos
+
+Para utilizarlo vamos a realizar el issue podemos agregar los label
+
+tambien podemos editar los templates y demas,
+
+ ** Milestones
+
+En GitHub, los "milestones" (hitos o hitos de desarrollo) son una herramienta que se utiliza 
+para agrupar y realizar un seguimiento de un conjunto de issues o problemas relacionados 
+en un proyecto. Los milestones ayudan a organizar y planificar el progreso del proyecto, 
+estableciendo metas específicas y fechas límite.
+
+https://docs.github.com/es/issues/tracking-your-work-with-issues/about-issues
+
+Agrupador de issues de un proyecto
+
+- Creamios un issues
+- En la opcion de Milestone, creamos uno nuevo
+- Submuit del issues
+
+-Creamos otro issues y lo agregamos al milestone
+- Vamos a la pestaña de milestone 
+- podemos colocar una fecha en no due date 
+Abrimos el milestone, editamos y colocamos al fecha
+
+Ahora, al ingresar a los milestone veremos que tenemos los dos issues
+-Seleccionamos uno y lo cerramos
+- COmo cerramos uno, tendremos la barra de progreso del milestone en 50% y amedida que se
+se vayan cerrando los issues se va aumentando la barra.
+
+** Agregando colaboradores
+
+Setting -> Colaborators -> Add people
+
+Digitamos el nombre del colaborador, Lo agregamos
+
+Le llegara un correo con la invitacion
+
+Puedo dar privilegios a los colaboraciores
+
+Setting -> Transfer 
+
+
+
+
+
+
+
