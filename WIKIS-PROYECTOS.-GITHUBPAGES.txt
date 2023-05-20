@@ -1,0 +1,76 @@
+** WIKIS
+
+Los "wikis" de GitHub son una funcionalidad que permite crear y mantener 
+documentación colaborativa para un proyecto en particular. Un wiki es un
+ repositorio especial dentro de GitHub que se utiliza exclusivamente para almacenar 
+y editar páginas de documentación.
+
+
+- Vamos al boton de wikis
+
+- Create first the page
+
+- Save wikis
+
+-  Podemos crear el footer
+
+- Podemos crear nuevas paginas en new page
+
+Cada paginas que se crea, es una url que podemos compartir.
+
+** Referencias entre paginas
+
+Editamos el cuerpo de una pagina y agregamos un enlace, endonde escribiremnos el texto y la URL
+la URL es el nombre de la pagina que se ve en la parte derecha.
+
+- Agregar custom sidebarm para el menu
+
+- En cuerpo agregamos los enlaces en el orden que queremos tenerlo
+
+** Proyectos en Git Hub
+
+Es una nueva opcion de Git Hub, Adminustrador de proyecto
+
+- Vamos al perfil del Git Hub y vamos al boton delproyecto
+- New Proyecto
+- Tenemos varias opciones de vista para el proyectyo
+- Seleccionamos Board
+- Cambiamos el nombre delproyecto
+
+Si vamos a la vista nueva, y vamos creando las tareas.
+
+- En la tarea creada podemos abrirla y convertirla en un issues
+- En la vista podemos cambiar y agregar las columnas
+
+- Desde el repositorio podemos agregar un proyecto
+
+** GitHub Pagesv - Para usuarios u organizacion
+
+Son hosting gratuitos para montar una pagina, html, css y JS
+
+Hay 2 Tipos
+1. Por usuario
+2. Por proyecto
+
+
+Por usuario, Creamos un repositorio conel mismo nombre de mi usuario asi:
+
+GabrielBetinV.github.io
+
+- Vamos al setting y seleccionanos la opcion pages
+- Debemos primero que todo subir el sitio web al repositorio y todos los archivos estaticps deben estar dentro de una carpeta llamada
+docs
+- Hacem0l el pus y luego creamos la pages en git hub
+
+
+** Insights
+
+n GitHub, "Insights" (Análisis, en español) es una funcionalidad 
+que proporciona información y métricas detalladas sobre un repositorio específico.
+ Estas métricas y datos estadísticos ayudan a los colaboradores y administradores del
+ proyecto a comprender y evaluar el rendimiento, la actividad y el impacto del repositorio.
+
+
+
+
+
