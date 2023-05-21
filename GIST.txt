@@ -1,0 +1,38 @@
+es una función que permite a los usuarios compartir fragmentos de código,
+ notas, documentos o cualquier otro tipo de texto de manera rápida y sencilla
+ Es una forma conveniente de compartir y colaborar en pequeños fragmentos de 
+código sin necesidad de crear un repositorio completo.
+
+- Vamos al + y seleccionamos New Gist
+
+- Escribimos la descripcion, el codigo fuente que queremos guardar y el nombre con al aextension
+
+- Create Secret Gist
+
+- Se púede tener mucos archivos en el Gist
+
+- POdemos descargar el archivo en ZIP
+
+- Se puede elimizar y se desruye
+
+** POdemos integrar el editor de codigo con git hub
+
+- Instalar la extension de Gist Ken Howard en  VS Code
+- Abrimos la paleta de comando de VS Code y escribimos Gist Selected Profile
+- Seleccionamos  Github.com
+- Debemos crear el token de accesp
+Vamos al icono del perfil
+Seleccioamos Your Github Profile
+Vamos otravez alicono del perfil y seleccionamos Setting
+En la parte izquierda seleccionamos developer setting
+Personal Acces Token
+Generar nuevo token, ojo debemos guardarlo en algun lugar, ya no se puede recuperar
+Tenesmo la opciones que queremos, seleccionamos para gist
+Generar token
+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
+- Escribimos el token en la paleta de comando que habiamos abierto
+
+Ahora si, al darel Open Giss, se mostraran los Gist que ya tenemos guardados en Git Hub
+
+
+

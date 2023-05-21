@@ -1,0 +1,53 @@
+
+En GitHub, una organización es una cuenta especial que
+ se utiliza para agrupar y administrar repositorios de código 
+relacionados. Puede ser utilizada por equipos, empresas u otras entidades
+ para colaborar en proyectos de desarrollo de software.
+
+** Creamos la organizacion
+
+Vamos al mas y seleccionamos new organizations
+
+- Seleccionamos el que queremos, free o pago
+
+- Seleccionamos free
+
+- INgresamos el nombre de la organizacion y el email de la organizacion
+
+- Podemos realizar las invitaciones
+
+** Transferir repositorios a a la organizacion
+
+- Vamos al repositorio
+- setting
+- Transfer
+- Seleccionamos al organizacvion y transferimos
+
+en este punto el repositorio no quedara cargado al usuario que lo creo si no a la organizacion.
+
+** Teams, equipos de trabajos
+
+
+- Ingresamos a la organizacion
+- Vamos al boton teams
+- New Teams
+- Crea team
+
+Podemos crear varios teams para organizar el area de desarrollo e invitar
+a los miembros
+
+
+** Repositorios y privilegios a los equipos de la organiazcion
+
+- Abrir el teams
+- Agregar un repositorio
+-  Por defecto el respositorio quedaria solo para lectura (read), Pull request, clone 
+
+Ene esta opcion debemos configurar el acceso al teams
+
+
+
+
+
+
+
